@@ -1,10 +1,40 @@
 = Antora BeagleBoard Docker Image
 
-This repository hosts the official Docker image for BeagleBoard docs using Antora.
-The Docker image is used to run Antora inside a container using the Docker client or Podman (or any client that adheres to the OCI standard).
+This repository hosts the official Docker image for BeagleBoard docs using 
+Antora. The Docker image is used to run Antora inside a container using the
+Docker client or Podman (or any client that adheres to the OCI standard).
+
+== How to Use this Image
+
+This image is primarily designed to be used as a command in a box. You can
+use this image as a replacement for the antora command to execute a playbook. 
+The benefit of using this image is that you don’t have to install Antora itself.
+
+ $ docker run -v $PWD:/antora:Z --rm -t ghcr.io/beagleboard/antora-docker:main antora-playbook.yml
+
+Alternately, you can execute the podman run command:
+
+ $ podman run -v $PWD:/antora:Z --rm -t ghcr.io/beagleboard/antora-docker:main antora-playbook.yml
+
+=== Align with local paths
+
+If you use the volume mapping `$PWD:/antora:Z`, you may notice that local paths reported by Antora don’t map back to your system.
+That's because, as far as Antora is concerned, [.path]_/antora_ is the current working directory.
+To remedy this problem, you need to map your current working directory into the container, then switch to it before running Antora.
+To do so, use this volume mount instead:
+
+ -v $PWD:$PWD:Z -w $PWD
+
+Notice the addition of the `-w` option.
+This option tells Antora to switch from [.path]_/antora_ to the directory you have mapped.
+Now, when Antora reports local paths, they will match paths on your system.
 
 == How to Build this Image
 
 To build this image locally, use the following command:
 
  $ docker build -t local/antora .
+
+Alternately, you can execute the podman run command:
+
+ $ podman build -t local/antora .
