@@ -1,0 +1,10 @@
+= Antora BeagleBoard Docker Image
+
+This repository hosts the official Docker image for BeagleBoard docs using Antora.
+The Docker image is used to run Antora inside a container using the Docker client or Podman (or any client that adheres to the OCI standard).
+
+== How to Build this Image
+
+To build this image locally, use the following command:
+
+ $ docker build -t local/antora .
