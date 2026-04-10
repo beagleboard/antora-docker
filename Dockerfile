@@ -11,4 +11,12 @@ RUN gem install --clear-sources asciidoctor-pdf rouge
 
 ADD $UI_BUNDLE_URL /antora-ui-bundle.zip
 
-ENTRYPOINT ["antora", "--attribute", "pdf-theme=/usr/local/lib/node_modules/@beagleboard/antora-ui/pdf-theme.yml", "--ui-bundle-url", "/antora-ui-bundle.zip"]
+ENTRYPOINT [ \
+        "antora", \
+        "--attribute", \
+        "pdf-theme=/usr/local/lib/node_modules/@beagleboard/antora-ui/pdf-theme.yml", \
+        "--ui-bundle-url", \
+        "/antora-ui-bundle.zip", \
+        "--stacktrace", \
+        "--log-level", \
+        "all"]
