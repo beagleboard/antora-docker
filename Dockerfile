@@ -7,7 +7,7 @@ RUN apk --no-cache add nodejs npm git ruby
 WORKDIR /antora
 
 RUN npm install -g antora @antora/lunr-extension @antora/pdf-extension github:beagleboard/antora-ui-beagle
-RUN gem install --clear-sources asciidoctor-pdf
+RUN gem install --clear-sources asciidoctor-pdf rouge
 
 ADD $UI_BUNDLE_URL /antora-ui-bundle.zip
 
