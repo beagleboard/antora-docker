@@ -10,11 +10,11 @@ This image is primarily designed to be used as a command in a box. You can
 use this image as a replacement for the antora command to execute a playbook. 
 The benefit of using this image is that you don’t have to install Antora itself.
 
- $ docker run -v $PWD:/antora:Z --rm -t ghcr.io/beagleboard/antora-docker:main antora-playbook.yml
+ $ docker run -v $PWD:/antora:Z --rm -it ghcr.io/beagleboard/antora-docker:main antora-playbook.yml
 
 Alternately, you can execute the podman run command:
 
- $ podman run -v $PWD:/antora:Z --rm -t ghcr.io/beagleboard/antora-docker:main antora-playbook.yml
+ $ podman run -v $PWD:/antora:Z --rm -it ghcr.io/beagleboard/antora-docker:main antora-playbook.yml
 
 === Align with local paths
 
